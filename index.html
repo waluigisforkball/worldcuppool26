@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#15120a">
+<title>Group Stage — WC Pool</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fdf8f0; --surface:#fffef9; --border:#ddd5c5; --border-dark:#b8ae9e;
+  --text:#15120a; --text-muted:#5a5040; --text-dim:#a09080; --header-bg:#15120a;
+  --accent:#1a6ef5; --accent-light:#dce9ff;
+  --pitch:#1f9d55; --pitch-dark:#157a40; --pitch-light:#d4f5e0;
+  --gold:#f5a623; --red:#e8234a; --purple:#8b1af5; --orange:#f5620a;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background-color:var(--bg);}
+body{
+  font-family:'Nunito Sans',sans-serif; font-weight:600; color:var(--text);
+  background-image:radial-gradient(circle,#c4bdb0 1.5px,transparent 1.5px);
+  background-size:20px 20px; background-attachment:fixed;
+  min-height:100vh; -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- shapes ---------- */
+
+/* ---------- header ---------- */
+.header{position:sticky;top:0;z-index:100;background:var(--header-bg);
+  border-bottom:6px solid var(--accent);padding:14px 18px 0;}
+.logo{font-family:'Nunito',sans-serif;font-size:28px;font-weight:900;color:var(--accent);line-height:1;}
+.logo span{color:#fff;font-weight:400;}
+.logo .ball{display:inline-block;margin-right:6px;font-size:24px;}
+.tagline{font-size:11px;color:#a09080;font-weight:700;letter-spacing:.5px;margin-top:3px;padding-bottom:10px;text-transform:uppercase;}
+.tabs{display:flex;gap:4px;margin-top:6px;}
+.tab{flex:1;background:none;border:none;color:#a09080;font-family:'Nunito',sans-serif;
+  font-weight:900;font-size:13px;letter-spacing:.5px;padding:10px 4px;cursor:pointer;
+  border-bottom:4px solid transparent;text-transform:uppercase;transition:.15s;}
+.tab.active{color:#fff;border-bottom-color:var(--accent);}
+.tab:hover{color:#fff;}
+
+/* ---------- layout ---------- */
+.main{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:18px 16px 80px;}
+.view{display:none;}
+.view.active{display:block;}
+.sec-label{font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;letter-spacing:.5px;
+  text-transform:uppercase;color:var(--text-muted);margin:22px 0 10px;}
+.sec-label:first-child{margin-top:4px;}
+
+/* ---------- cards ---------- */
+.card-wrap{position:relative;margin-bottom:16px;}
+.card-shadow{position:absolute;top:5px;left:5px;right:-5px;bottom:-5px;background:var(--border-dark);border-radius:16px;z-index:0;}
+.card{position:relative;z-index:1;background:var(--surface);border:2.5px solid var(--border);
+  border-left-width:7px;border-left-color:var(--accent);border-radius:16px;padding:15px;}
+
+/* ---------- form bits ---------- */
+label.fld{display:block;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;
+  letter-spacing:.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;}
+input[type=text],input[type=number],input[type=password]{
+  width:100%;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:15px;color:var(--text);
+  background:#fff;border:2.5px solid var(--border);border-radius:11px;padding:10px 12px;outline:none;}
+input:focus{border-color:var(--accent);}
+.row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;}
+.row>div{flex:1;min-width:120px;}
+
+/* ---------- buttons ---------- */
+button.btn{font-family:'Nunito Sans',sans-serif;font-weight:800;font-size:15px;border-radius:11px;
+  border:2.5px solid var(--accent);background:var(--accent);color:#fff;padding:11px 18px;cursor:pointer;transition:transform .12s;}
+button.btn:hover{transform:translate(-1px,-1px);}
+button.btn:active{transform:translate(1px,1px);}
+button.btn.ghost{background:#fff;color:var(--accent);}
+button.btn.pitch{background:var(--pitch);border-color:var(--pitch-dark);}
+button.btn.warn{background:#fff;color:var(--red);border-color:var(--red);}
+button.btn.sm{font-size:13px;padding:7px 12px;}
+button.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
+
+/* ---------- player setup ---------- */
+.player-chip{display:flex;gap:8px;align-items:center;margin-bottom:8px;}
+.player-chip .num{font-family:'Nunito',sans-serif;font-weight:900;color:var(--accent);width:24px;text-align:center;}
+.player-chip input{flex:1;}
+.player-chip .del{background:none;border:none;color:var(--red);font-weight:900;font-size:18px;cursor:pointer;padding:0 6px;}
+
+/* ---------- math callout ---------- */
+.math{background:var(--pitch-light);border:2.5px solid var(--pitch);border-radius:12px;
+  padding:12px 14px;font-weight:700;font-size:14px;color:var(--pitch-dark);margin-top:12px;}
+.math b{font-weight:900;}
+
+/* ---------- scoring grid ---------- */
+.score-grid{display:grid;grid-template-columns:1fr 70px;gap:8px;align-items:center;}
+.score-grid .sl{font-weight:800;font-size:14px;}
+.score-grid input{padding:7px 9px;text-align:center;font-size:14px;}
+
+/* ---------- draft results ---------- */
+.roster-wrap{position:relative;margin-bottom:16px;}
+.roster-shadow{position:absolute;top:5px;left:5px;right:-5px;bottom:-5px;background:var(--border-dark);border-radius:16px;z-index:0;}
+.roster{position:relative;z-index:1;background:var(--surface);border:2.5px solid var(--border);
+  border-left-width:7px;border-radius:16px;padding:13px 15px;}
+.roster h3{font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;display:flex;justify-content:space-between;align-items:baseline;}
+.roster h3 .pts{font-size:15px;color:var(--accent);}
+.team-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.tp{display:inline-flex;align-items:center;gap:5px;background:var(--accent-light);color:var(--accent);
+  font-weight:800;font-size:12px;padding:4px 9px;border-radius:8px;}
+.tp .grp{background:var(--accent);color:#fff;font-size:9px;font-weight:900;border-radius:5px;padding:1px 5px;}
+.tp .ep{background:var(--gold);color:#15120a;font-size:10px;font-weight:900;border-radius:5px;padding:1px 5px;}
+
+/* ---------- leaderboard ---------- */
+.lb-row{display:flex;align-items:center;gap:12px;padding:13px 15px;}
+.lb-rank{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;color:var(--text-dim);width:32px;text-align:center;}
+.lb-rank.r1{color:var(--gold);}.lb-rank.r2{color:#9aa0a6;}.lb-rank.r3{color:#cd7f32;}
+.lb-name{font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;flex:1;}
+.lb-pts{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;color:var(--accent);}
+.lb-sub{font-size:12px;color:var(--text-muted);font-weight:700;margin-top:2px;}
+.lb-detail{border-top:2px dashed var(--border);margin-top:10px;padding-top:10px;display:none;}
+.lb-detail.open{display:block;}
+.lb-chev{font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:var(--text-dim);
+  transition:transform .2s;margin-left:6px;flex-shrink:0;}
+.lb-row.open .lb-chev{transform:rotate(90deg);color:var(--accent);}
+.lb-row:active{background:#faf6ee;}
+.lb-team{display:flex;justify-content:space-between;font-size:13px;font-weight:700;padding:3px 0;}
+.lb-team .tn{color:var(--text);}
+.lb-team .tpts{font-weight:900;color:var(--accent);}
+.lb-team .stg{font-size:10px;color:var(--text-dim);font-weight:800;text-transform:uppercase;}
+
+/* ---------- misc ---------- */
+.note{font-size:12px;color:var(--text-muted);font-weight:700;line-height:1.5;margin-top:8px;}
+.note.warn{color:var(--red);}
+.empty{text-align:center;color:var(--text-dim);font-weight:700;padding:40px 20px;font-size:15px;}
+.status{font-size:12px;font-weight:800;color:var(--text-muted);text-align:center;margin-top:10px;}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+.divider{height:2px;background:var(--border);margin:18px 0;border-radius:2px;}
+.flag{font-size:15px;}
+@media(max-width:480px){.lb-rank{font-size:18px;width:26px;}.lb-pts{font-size:18px;}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo"><span class="ball">⚽</span>Group <span>Stage</span></div>
+  <div class="tagline">World Cup 2026 · Draft Pool</div>
+  <div class="tabs">
+    <button class="tab active" data-view="home">Home</button>
+    <button class="tab" data-view="setup">Setup</button>
+    <button class="tab" data-view="draft">Draft</button>
+    <button class="tab" data-view="board">Standings</button>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ============ HOME / RULES ============ -->
+  <div class="view active" id="view-home">
+    <div class="card-wrap"><div class="card-shadow"></div><div class="card">
+      <div style="font-family:'Nunito';font-weight:900;font-size:22px;line-height:1.1;">⚽ The World Cup 2026 Pool</div>
+      <div class="note" style="font-size:14px;margin-top:8px;">All 48 teams get drafted out among the players. Your teams earn you points as they win games and advance through the tournament. Most points when the Final ends wins the pool. Check back here any time to see where the standings sit.</div>
+    </div></div>
+
+    <div class="sec-label">The Draft</div>
+    <div class="card-wrap"><div class="card-shadow"></div><div class="card">
+      <ul style="margin:0;padding-left:18px;font-weight:700;font-size:14px;line-height:1.6;">
+        <li>Every one of the 48 teams is assigned to exactly one player — no shared teams, no leftovers.</li>
+        <li>Teams are handed out by a <b>randomized snake draft</b> that spreads each person's teams across the 12 groups. Nobody gets a cluster from one group, so everyone ends up with a mix of contenders and long shots.</li>
+        <li>Each player gets the same number of teams. If 48 doesn't divide evenly by the player count, the leftover team(s) stay unassigned and belong to nobody — keeping every roster equal.</li>
+        <li>The draft runs once and locks before kickoff. No trading, no re-drafts.</li>
+      </ul>
+    </div></div>
+
+    <div class="sec-label">Scoring</div>
+    <div class="card-wrap"><div class="card-shadow"></div><div class="card">
+      <div class="note" style="font-size:14px;margin-top:0;margin-bottom:10px;">Points come from <b>group-stage results</b> and <b>how far a team advances</b>. Points stack — a team that goes all the way earns everything along the path.</div>
+      <div id="rules-scoring"></div>
+      <div class="note" style="font-size:13px;">Owning the champion is the single best prize — but on its own it's <b>not enough to guarantee a win</b>. If the rest of your teams flop, someone with steady results across their whole roster can still catch you. Depth matters as much as a superstar team.</div>
+    </div></div>
+
+    <div class="sec-label">Winning</div>
+    <div class="card-wrap"><div class="card-shadow"></div><div class="card">
+      <div class="note" style="font-size:14px;margin-top:0;">Add up every team on your roster. Highest total when the Final ends takes the pool. Standings update through the tournament — tap any player on the Standings tab to see exactly which teams earned what.</div>
+    </div></div>
+  </div>
+
+  <!-- ============ SETUP ============ -->
+  <div class="view" id="view-setup">
+    <div class="sec-label">Players</div>
+    <div class="card-wrap"><div class="card-shadow"></div><div class="card">
+      <div id="player-list"></div>
+      <button class="btn ghost sm" id="add-player" style="margin-top:6px;">+ Add player</button>
+      <div class="math" id="math-callout">Add players to see the split.</div>
+    </div></div>
+
+    <div class="sec-label">Point Values</div>
+    <div class="card-wrap"><div class="card-shadow"></div><div class="card">
+      <div class="score-grid" id="score-grid"></div>
+      <div class="note">Points stack as a team advances. A champion earns every value below, summed. Defaults are tuned so owning the winner is the best single prize but still catchable.</div>
+      <button class="btn ghost sm" id="reset-scoring" style="margin-top:12px;">Reset to defaults</button>
+    </div></div>
+
+    <div class="sec-label">Live Data</div>
+    <div class="card-wrap"><div class="card-shadow"></div><div class="card">
+      <label class="fld">football-data.org API key</label>
+      <input type="password" id="api-key" placeholder="paste your token (optional)">
+      <div class="note">Stored only in this browser (localStorage), never uploaded. Free tier = 10 requests/min. Leave blank to score manually. Get a free key at football-data.org.</div>
+    </div></div>
+  </div>
+
+  <!-- ============ DRAFT ============ -->
+  <div class="view" id="view-draft">
+    <div class="card-wrap"><div class="card-shadow"></div><div class="card">
+      <div style="font-family:'Nunito';font-weight:900;font-size:16px;">Snake draft across groups</div>
+      <div class="note">Shuffles player order, then deals one team per group in a snaking pattern so every roster is spread across the bracket — no one gets a cluster from a single group.</div>
+      <div class="btn-row">
+        <button class="btn pitch" id="run-draft">⚽ Run Draft</button>
+        <button class="btn ghost sm" id="copy-draft">Copy result (JSON)</button>
+      </div>
+      <div class="status" id="draft-status"></div>
+    </div></div>
+    <div id="draft-results"></div>
+  </div>
+
+  <!-- ============ STANDINGS ============ -->
+  <div class="view" id="view-board">
+    <div id="view-mode-banner"></div>
+    <div class="card-wrap" id="admin-controls"><div class="card-shadow"></div><div class="card">
+      <div class="btn-row" style="margin-top:0;">
+        <button class="btn" id="refresh-board">↻ Refresh from API</button>
+        <button class="btn ghost sm" id="manual-board">Manual scores</button>
+        <button class="btn pitch sm" id="publish-board">⬇ Export roster.json</button>
+      </div>
+      <div class="status" id="board-status">Run a draft first, then refresh.</div>
+    </div></div>
+    <div id="leaderboard"></div>
+  </div>
+
+</div>
+
+<script>
+/* ===================== DATA ===================== */
+// 12 groups A–L. Team list is editable after the official draw — placeholders shown
+// are the real WC2026 group assignments where known; "Manual scores" lets you map results.
+const GROUPS = {
+  A:['Mexico','South Africa','South Korea','Czechia'],
+  B:['Canada','Switzerland','Qatar','Bosnia and Herzegovina'],
+  C:['Brazil','Morocco','Scotland','Haiti'],
+  D:['USA','Paraguay','Australia','Türkiye'],
+  E:['Germany','Curaçao','Ivory Coast','Ecuador'],
+  F:['Netherlands','Japan','Sweden','Tunisia'],
+  G:['Belgium','Egypt','Iran','New Zealand'],
+  H:['Spain','Cape Verde','Saudi Arabia','Uruguay'],
+  I:['France','Senegal','Iraq','Norway'],
+  J:['Argentina','Algeria','Austria','Jordan'],
+  K:['Portugal','Colombia','Uzbekistan','DR Congo'],
+  L:['England','Croatia','Ghana','Panama'],
+};
+const STAGE_ORDER = ['groupWin','r32','r16','qf','sf','final','champ'];
+const STAGE_LABEL = {
+  groupWin:'Group-stage win', draw:'Group-stage draw', r32:'Reached Round of 32',
+  r16:'Reached Round of 16', qf:'Reached Quarterfinal', sf:'Reached Semifinal',
+  final:'Reached Final', champ:'Champion'
+};
+const DEFAULT_SCORING = {draw:0.5, groupWin:1, r32:2, r16:3, qf:4, sf:6, final:8, champ:10};
+
+/* ===================== STATE ===================== */
+let state = {
+  players:['',''],
+  scoring:{...DEFAULT_SCORING},
+  apiKey:'',
+  draft:null,          // {players:[{name,teams:[{team,group}]}]}
+  results:{}           // teamName -> {groupWins, draws, stageReached}
+};
+function save(){ try{ localStorage.setItem('wcpool', JSON.stringify(state)); }catch(e){} }
+function load(){ try{ const s=localStorage.getItem('wcpool'); if(s) state=Object.assign(state,JSON.parse(s)); }catch(e){} }
+load();
+
+/* Published-mode: a visitor with no local draft of their own sees the official
+   standings (fetched from standings.json, written nightly by the Action) read-only.
+   The commissioner — whoever ran the draft in this browser — keeps full control. */
+let isPublishedFlag = false;
+
+/* ===================== SETUP: PLAYERS ===================== */
+const playerList = document.getElementById('player-list');
+function renderPlayers(){
+  playerList.innerHTML='';
+  state.players.forEach((name,i)=>{
+    const row=document.createElement('div'); row.className='player-chip';
+    row.innerHTML=`<span class="num">${i+1}</span>
+      <input type="text" value="${name.replace(/"/g,'&quot;')}" placeholder="Player ${i+1}">
+      <button class="del" title="remove">×</button>`;
+    row.querySelector('input').addEventListener('input',e=>{state.players[i]=e.target.value;save();updateMath();});
+    row.querySelector('.del').addEventListener('click',()=>{
+      if(state.players.length<=2){alert('Need at least 2 players.');return;}
+      state.players.splice(i,1);save();renderPlayers();updateMath();
+    });
+    playerList.appendChild(row);
+  });
+}
+document.getElementById('add-player').addEventListener('click',()=>{
+  state.players.push('');save();renderPlayers();updateMath();
+});
+
+function updateMath(){
+  const n=state.players.length, T=48;
+  const base=Math.floor(T/n), rem=T%n;
+  const el=document.getElementById('math-callout');
+  if(rem===0){
+    el.innerHTML=`<b>${n} players → ${base} teams each.</b> 48 ÷ ${n} divides evenly — every team is assigned.`;
+  }else{
+    el.innerHTML=`<b>${n} players → ${base} teams each.</b> 48 ÷ ${n} = ${base} remainder ${rem}, so ${rem} team${rem>1?'s':''} go${rem>1?'':'es'} unassigned to keep rosters even. Aim for a player count that divides 48 (2, 3, 4, 6, 8, 12, 16, 24) to use every team.`;
+  }
+}
+
+/* ===================== SETUP: SCORING ===================== */
+const scoreGrid=document.getElementById('score-grid');
+function renderScoring(){
+  scoreGrid.innerHTML='';
+  const keys=['draw',...STAGE_ORDER];
+  keys.forEach(k=>{
+    const sl=document.createElement('div'); sl.className='sl'; sl.textContent=STAGE_LABEL[k];
+    const wrap=document.createElement('div');
+    const inp=document.createElement('input'); inp.type='number'; inp.step='0.5'; inp.value=state.scoring[k];
+    inp.addEventListener('input',e=>{state.scoring[k]=parseFloat(e.target.value)||0;save();renderBoard();renderDraft();renderRulesScoring();});
+    wrap.appendChild(inp);
+    scoreGrid.appendChild(sl); scoreGrid.appendChild(wrap);
+  });
+}
+document.getElementById('reset-scoring').addEventListener('click',()=>{
+  state.scoring={...DEFAULT_SCORING};save();renderScoring();renderBoard();renderDraft();renderRulesScoring();
+});
+
+/* ===================== SETUP: API KEY ===================== */
+const apiInput=document.getElementById('api-key');
+apiInput.value=state.apiKey;
+apiInput.addEventListener('input',e=>{state.apiKey=e.target.value.trim();save();});
+
+/* ===================== DRAFT ENGINE ===================== */
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function runDraft(){
+  const names=state.players.map((p,i)=>p.trim()||`Player ${i+1}`);
+  const n=names.length;
+  // Build a pool of {team,group}, shuffled WITHIN each group, then iterate group-by-group
+  // so the snake naturally pulls from different groups as it goes.
+  let pool=[];
+  // Interleave groups: take shuffled teams column-wise so consecutive picks span groups.
+  const groupKeys=Object.keys(GROUPS);
+  const shuffledGroups=groupKeys.map(g=>({g,teams:shuffle(GROUPS[g])}));
+  for(let slot=0;slot<4;slot++){
+    shuffle(shuffledGroups).forEach(sg=>{ pool.push({team:sg.teams[slot],group:sg.g}); });
+  }
+  // Snake assignment — cap each player at `base` teams so rosters stay even.
+  // Any remainder teams are left unassigned (go to nobody).
+  const base=Math.floor(48/n);
+  const dealCount=base*n;                 // total teams actually handed out
+  const order=shuffle([...Array(n).keys()]);
+  const rosters=names.map(nm=>({name:nm,teams:[]}));
+  let dir=1, ptr=0;
+  pool.slice(0,dealCount).forEach(item=>{
+    rosters[order[ptr]].teams.push(item);
+    if(dir===1){ if(ptr===n-1){dir=-1;} else ptr++; }
+    else { if(ptr===0){dir=1;} else ptr--; }
+  });
+  const unassigned=pool.slice(dealCount);  // leftover teams, owned by no one
+  // sort each roster's teams by group for readability
+  rosters.forEach(r=>r.teams.sort((a,b)=>a.group.localeCompare(b.group)));
+  unassigned.sort((a,b)=>a.group.localeCompare(b.group));
+  state.draft={players:rosters,baseTeams:base,unassigned};
+  save();
+}
+
+document.getElementById('run-draft').addEventListener('click',()=>{
+  runDraft();
+  document.getElementById('draft-status').textContent='Drafted ✓ — re-run to reshuffle.';
+  renderDraft(); renderBoard();
+});
+document.getElementById('copy-draft').addEventListener('click',()=>{
+  if(!state.draft){alert('Run a draft first.');return;}
+  navigator.clipboard.writeText(JSON.stringify(state.draft,null,2));
+  document.getElementById('draft-status').textContent='Copied draft JSON to clipboard.';
+});
+
+function teamPoints(teamName){
+  const r=state.results[teamName]; const s=state.scoring; if(!r) return {pts:0,parts:[]};
+  let pts=0; const parts=[];
+  if(r.groupWins){ const p=r.groupWins*s.groupWin; pts+=p; parts.push([`${r.groupWins} group win${r.groupWins>1?'s':''}`,p]); }
+  if(r.draws){ const p=r.draws*s.draw; pts+=p; parts.push([`${r.draws} draw${r.draws>1?'s':''}`,p]); }
+  const reached=r.stageReached;
+  const idx=reached?STAGE_ORDER.indexOf(reached):-1;
+  // award every knockout stage up to and including reached (skip groupWin index 0)
+  for(let i=1;i<=idx;i++){ const k=STAGE_ORDER[i]; pts+=s[k]; parts.push([STAGE_LABEL[k],s[k]]); }
+  return {pts,parts,stage:reached};
+}
+
+function renderDraft(){
+  const wrap=document.getElementById('draft-results');
+  if(!state.draft){ wrap.innerHTML='<div class="empty">No draft yet. Hit Run Draft above.</div>'; return; }
+  wrap.innerHTML='';
+  state.draft.players.forEach(pl=>{
+    const total=pl.teams.reduce((s,t)=>s+teamPoints(t.team).pts,0);
+    const pills=pl.teams.map(t=>{
+      const extra=t.bonus?'<span class="ep">+1</span>':'';
+      return `<span class="tp"><span class="grp">${t.group}</span>${t.team}</span>`;
+    }).join('');
+    const rw=document.createElement('div'); rw.className='roster-wrap';
+    rw.innerHTML=`<div class="roster-shadow"></div><div class="roster">
+      <h3>${pl.name}<span class="pts">${pl.teams.length} teams</span></h3>
+      <div class="team-pills">${pills}</div></div>`;
+    wrap.appendChild(rw);
+  });
+  // unassigned teams (left out to keep rosters even)
+  const un=state.draft.unassigned||[];
+  if(un.length){
+    const pills=un.map(t=>`<span class="tp" style="background:#f0ece2;color:var(--text-muted);"><span class="grp" style="background:var(--text-dim);">${t.group}</span>${t.team}</span>`).join('');
+    const rw=document.createElement('div'); rw.className='roster-wrap';
+    rw.innerHTML=`<div class="roster-shadow"></div><div class="roster" style="border-left-color:var(--text-dim);">
+      <h3 style="color:var(--text-muted);">Unassigned<span class="pts" style="color:var(--text-muted);">${un.length} team${un.length>1?'s':''} · no owner</span></h3>
+      <div class="team-pills">${pills}</div></div>`;
+    wrap.appendChild(rw);
+  }
+}
+
+/* ===================== STANDINGS ===================== */
+function computeLeaderboard(){
+  if(!state.draft) return [];
+  return state.draft.players.map(pl=>{
+    const teams=pl.teams.map(t=>{const tp=teamPoints(t.team);return {name:t.team,group:t.group,...tp};});
+    const total=teams.reduce((s,t)=>s+t.pts,0);
+    return {name:pl.name,total,teams};
+  }).sort((a,b)=>b.total-a.total);
+}
+function renderBoard(){
+  const wrap=document.getElementById('leaderboard');
+  const lb=computeLeaderboard();
+  if(!lb.length){ wrap.innerHTML='<div class="empty">No standings yet — run a draft.</div>'; return; }
+  wrap.innerHTML='';
+  lb.forEach((p,i)=>{
+    const rcls=i===0?'r1':i===1?'r2':i===2?'r3':'';
+    const detail=p.teams.sort((a,b)=>b.pts-a.pts).map(t=>{
+      const stg=t.stage?STAGE_LABEL[t.stage]:'In group stage';
+      return `<div class="lb-team"><span class="tn">${t.name} <span class="stg">${stg}</span></span><span class="tpts">${t.pts}</span></div>`;
+    }).join('');
+    const rw=document.createElement('div'); rw.className='roster-wrap';
+    rw.innerHTML=`<div class="roster-shadow"></div><div class="roster" style="border-left-color:${i===0?'var(--gold)':'var(--accent)'};padding:0;">
+      <div class="lb-row" style="cursor:pointer;">
+        <div class="lb-rank ${rcls}">${i+1}</div>
+        <div style="flex:1;"><div class="lb-name">${p.name}</div><div class="lb-sub">${p.teams.length} teams · tap to view roster</div></div>
+        <div class="lb-pts">${(+p.total.toFixed(1))}</div>
+        <div class="lb-chev">›</div>
+      </div>
+      <div class="lb-detail" style="padding:0 15px 13px;">${detail}</div>
+    </div>`;
+    const rowEl=rw.querySelector('.lb-row');
+    rowEl.addEventListener('click',()=>{rowEl.classList.toggle('open');rw.querySelector('.lb-detail').classList.toggle('open');});
+    wrap.appendChild(rw);
+  });
+}
+
+/* ===================== API FETCH ===================== */
+// football-data.org WC competition code. Maps fixtures -> per-team groupWins/draws/stageReached.
+async function refreshFromAPI(){
+  const status=document.getElementById('board-status');
+  if(!state.draft){status.textContent='Run a draft first.';return;}
+  if(!state.apiKey){status.textContent='No API key set (Setup tab). Use Manual scores instead.';return;}
+  status.textContent='Fetching from football-data.org…';
+  try{
+    const res=await fetch('https://api.football-data.org/v4/competitions/WC/matches',{
+      headers:{'X-Auth-Token':state.apiKey}
+    });
+    if(!res.ok){ status.textContent=`API error ${res.status}. Check key / rate limit (10/min).`; return; }
+    const data=await res.json();
+    ingestMatches(data.matches||[]);
+    save(); renderBoard(); renderDraft();
+    status.textContent=`Updated from ${ (data.matches||[]).length } matches ✓`;
+  }catch(e){
+    status.textContent='Network/CORS error — football-data.org may block browser calls. Use Manual scores.';
+  }
+}
+function ingestMatches(matches){
+  const r={};
+  const ensure=t=>{ if(!r[t]) r[t]={groupWins:0,draws:0,stageReached:null}; return r[t]; };
+  const stageRank={'LAST_32':'r32','LAST_16':'r16','QUARTER_FINALS':'qf','SEMI_FINALS':'sf','FINAL':'final'};
+  const order=['r32','r16','qf','sf','final','champ'];
+  matches.forEach(m=>{
+    const h=m.homeTeam?.name, a=m.awayTeam?.name;
+    if(!h||!a) return;
+    const stage=m.stage;
+    const winner=m.score?.winner; // HOME_TEAM / AWAY_TEAM / DRAW
+    if(stage==='GROUP_STAGE'){
+      if(m.status==='FINISHED'){
+        if(winner==='DRAW'){ ensure(h).draws++; ensure(a).draws++; }
+        else if(winner==='HOME_TEAM'){ ensure(h).groupWins++; }
+        else if(winner==='AWAY_TEAM'){ ensure(a).groupWins++; }
+      }
+    } else if(stageRank[stage]){
+      // both teams reached this knockout stage
+      const st=stageRank[stage];
+      [h,a].forEach(t=>{ const o=ensure(t); if(rankGE(st,o.stageReached,order)) o.stageReached=st; });
+      // winner of final = champ
+      if(stage==='FINAL' && m.status==='FINISHED' && winner && winner!=='DRAW'){
+        const champ=winner==='HOME_TEAM'?h:a; ensure(champ).stageReached='champ';
+      }
+    }
+  });
+  state.results=r;
+}
+function rankGE(a,b,order){ if(!b) return true; return order.indexOf(a)>=order.indexOf(b); }
+
+document.getElementById('refresh-board').addEventListener('click',refreshFromAPI);
+
+/* ---- Manual scores: simple prompt-based entry per team ---- */
+document.getElementById('manual-board').addEventListener('click',()=>{
+  if(!state.draft){alert('Run a draft first.');return;}
+  openManual();
+});
+function openManual(){
+  // Build a lightweight editor in the board view
+  const wrap=document.getElementById('leaderboard');
+  const allTeams=[...new Set(state.draft.players.flatMap(p=>p.teams.map(t=>t.team)))].sort();
+  let html='<div class="card-wrap"><div class="card-shadow"></div><div class="card"><div style="font-family:Nunito;font-weight:900;font-size:16px;margin-bottom:4px;">Manual entry</div><div class="note">Set each team\'s group wins, draws, and furthest stage. Updates points live.</div>';
+  allTeams.forEach(t=>{
+    const r=state.results[t]||{groupWins:0,draws:0,stageReached:null};
+    html+=`<div style="border-top:2px dashed var(--border);padding-top:10px;margin-top:10px;">
+      <div style="font-weight:900;font-family:Nunito;margin-bottom:6px;">${t}</div>
+      <div class="row">
+        <div><label class="fld">Wins</label><input type="number" min="0" max="3" value="${r.groupWins}" data-t="${t}" data-f="groupWins"></div>
+        <div><label class="fld">Draws</label><input type="number" min="0" max="3" value="${r.draws}" data-t="${t}" data-f="draws"></div>
+        <div><label class="fld">Stage</label>
+          <select data-t="${t}" data-f="stageReached" style="width:100%;font-family:'Nunito Sans';font-weight:700;font-size:14px;border:2.5px solid var(--border);border-radius:11px;padding:9px;background:#fff;">
+            <option value="">Group only</option>
+            <option value="r32">R32</option><option value="r16">R16</option>
+            <option value="qf">QF</option><option value="sf">SF</option>
+            <option value="final">Final</option><option value="champ">Champion</option>
+          </select></div>
+      </div></div>`;
+  });
+  html+='<button class="btn pitch sm" id="done-manual" style="margin-top:14px;">Done</button></div></div>';
+  wrap.innerHTML=html;
+  // set selects + listeners
+  wrap.querySelectorAll('select[data-f]').forEach(s=>{const t=s.dataset.t;const r=state.results[t];if(r&&r.stageReached)s.value=r.stageReached;});
+  wrap.querySelectorAll('[data-f]').forEach(inp=>{
+    inp.addEventListener('input',e=>{
+      const t=e.target.dataset.t,f=e.target.dataset.f;
+      if(!state.results[t])state.results[t]={groupWins:0,draws:0,stageReached:null};
+      state.results[t][f]= f==='stageReached'? (e.target.value||null) : (parseInt(e.target.value)||0);
+      save();
+    });
+  });
+  document.getElementById('done-manual').addEventListener('click',()=>{renderBoard();renderDraft();});
+}
+
+/* ===================== TABS ===================== */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('view-'+t.dataset.view).classList.add('active');
+    if(t.dataset.view==='board') renderBoard();
+    if(t.dataset.view==='draft') renderDraft();
+  });
+});
+
+
+/* ===================== HOME: rules scoring table ===================== */
+function renderRulesScoring(){
+  const el=document.getElementById('rules-scoring'); if(!el) return;
+  const s=state.scoring;
+  const rows=[
+    ['Win a group-stage match',s.groupWin],
+    ['Draw a group-stage match',s.draw],
+    ['Reach the Round of 32','+'+s.r32],
+    ['Reach the Round of 16','+'+s.r16],
+    ['Reach the Quarterfinal','+'+s.qf],
+    ['Reach the Semifinal','+'+s.sf],
+    ['Reach the Final','+'+s.final],
+    ['Win the whole thing','+'+s.champ],
+  ];
+  el.innerHTML='<div style="border:2.5px solid var(--border);border-radius:11px;overflow:hidden;margin-bottom:12px;">'+
+    rows.map((r,i)=>`<div style="display:flex;justify-content:space-between;padding:9px 12px;font-weight:700;font-size:14px;${i%2?'background:#faf6ee;':''}">
+      <span>${r[0]}</span><span style="font-family:Nunito;font-weight:900;color:var(--accent);">${r[1]}</span></div>`).join('')+'</div>';
+}
+
+/* ===================== PUBLISH (Option A + nightly Action) ===================== */
+function renderViewBanner(){
+  const b=document.getElementById('view-mode-banner');
+  const admin=document.getElementById('admin-controls');
+  if(!b) return;
+  if(isPublishedFlag){
+    const when = window.__standingsUpdated ? new Date(window.__standingsUpdated).toLocaleString() : 'last update';
+    b.innerHTML=`<div class="math" style="background:var(--accent-light);border-color:var(--accent);color:var(--accent);margin-bottom:16px;margin-top:0;">📊 <b>Official standings</b> · updated ${when}. Refreshes automatically each night.</div>`;
+    if(admin) admin.style.display='none';
+  }else{
+    b.innerHTML='';
+    if(admin) admin.style.display='';
+  }
+}
+
+/* Export the locked rosters + scoring for the nightly Action to read. */
+function exportRoster(){
+  if(!state.draft){alert('Run a draft first.');return;}
+  const roster={draft:state.draft,scoring:state.scoring};
+  const blob=new Blob([JSON.stringify(roster,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='roster.json'; a.click();
+  URL.revokeObjectURL(url);
+  document.getElementById('board-status').innerHTML='Downloaded <b>roster.json</b> — commit it to your repo root. The nightly Action reads it to compute scores.';
+}
+const pubBtn=document.getElementById('publish-board');
+if(pubBtn) pubBtn.addEventListener('click',exportRoster);
+
+/* On load, try to fetch standings.json (written nightly by the Action).
+   If present AND this visitor isn't the commissioner, show it read-only. */
+async function loadPublishedStandings(){
+  try{
+    const res=await fetch('standings.json?t='+Date.now());
+    if(!res.ok) return;
+    const data=await res.json();
+    if(!data.standings) return;
+    window.__standingsUpdated = data.updated;
+    if(!state.draft){
+      // visitor with no local draft -> show official standings
+      window.__publishedStandings = data.standings;
+      if(data.scoring) state.scoring = data.scoring;
+      isPublishedFlag = true;
+      renderRulesScoring(); renderBoardPublished(); renderViewBanner();
+    }
+  }catch(e){ /* no standings.json yet — fine */ }
+}
+
+/* Render leaderboard directly from a published standings array. */
+function renderBoardPublished(){
+  const wrap=document.getElementById('leaderboard');
+  const lb=window.__publishedStandings; if(!lb){return;}
+  wrap.innerHTML='';
+  lb.forEach((p,i)=>{
+    const rcls=i===0?'r1':i===1?'r2':i===2?'r3':'';
+    const detail=p.teams.map(t=>{
+      const stg=t.stage?STAGE_LABEL[t.stage]:'In group stage';
+      return `<div class="lb-team"><span class="tn">${t.name} <span class="stg">${stg}</span></span><span class="tpts">${t.pts}</span></div>`;
+    }).join('');
+    const rw=document.createElement('div'); rw.className='roster-wrap';
+    rw.innerHTML=`<div class="roster-shadow"></div><div class="roster" style="border-left-color:${i===0?'var(--gold)':'var(--accent)'};padding:0;">
+      <div class="lb-row" style="cursor:pointer;">
+        <div class="lb-rank ${rcls}">${i+1}</div>
+        <div style="flex:1;"><div class="lb-name">${p.name}</div><div class="lb-sub">${p.teams.length} teams · tap to view roster</div></div>
+        <div class="lb-pts">${(+p.total.toFixed(1))}</div>
+        <div class="lb-chev">›</div>
+      </div>
+      <div class="lb-detail" style="padding:0 15px 13px;">${detail}</div>
+    </div>`;
+    const rowEl=rw.querySelector('.lb-row');
+    rowEl.addEventListener('click',()=>{rowEl.classList.toggle('open');rw.querySelector('.lb-detail').classList.toggle('open');});
+    wrap.appendChild(rw);
+  });
+}
+
+/* ===================== INIT ===================== */
+renderPlayers(); updateMath(); renderScoring(); renderRulesScoring();
+renderDraft(); renderBoard(); renderViewBanner();
+loadPublishedStandings();
+</script>
+</body>
+</html>
