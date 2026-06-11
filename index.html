@@ -194,12 +194,6 @@ button.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
       <button class="btn ghost sm" id="reset-scoring" style="margin-top:12px;">Reset to defaults</button>
     </div></div>
 
-    <div class="sec-label">Live Data</div>
-    <div class="card-wrap"><div class="card-shadow"></div><div class="card">
-      <label class="fld">football-data.org API key</label>
-      <input type="password" id="api-key" placeholder="paste your token (optional)">
-      <div class="note">Stored only in this browser (localStorage), never uploaded. Free tier = 10 requests/min. Leave blank to score manually. Get a free key at football-data.org.</div>
-    </div></div>
   </div>
 
   <!-- ============ DRAFT ============ -->
@@ -210,6 +204,7 @@ button.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
       <div class="btn-row">
         <button class="btn pitch" id="run-draft">⚽ Run Draft</button>
         <button class="btn ghost sm" id="copy-draft">Copy result (JSON)</button>
+        <button class="btn warn sm" id="clear-draft">Clear draft</button>
       </div>
       <div class="status" id="draft-status"></div>
     </div></div>
@@ -221,11 +216,10 @@ button.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
     <div id="view-mode-banner"></div>
     <div class="card-wrap" id="admin-controls"><div class="card-shadow"></div><div class="card">
       <div class="btn-row" style="margin-top:0;">
-        <button class="btn" id="refresh-board">↻ Refresh from API</button>
-        <button class="btn ghost sm" id="manual-board">Manual scores</button>
+        <button class="btn" id="manual-board">Enter / edit scores</button>
         <button class="btn pitch sm" id="publish-board">⬇ Export roster.json</button>
       </div>
-      <div class="status" id="board-status">Run a draft first, then refresh.</div>
+      <div class="status" id="board-status">Run a draft first.</div>
     </div></div>
     <div id="leaderboard"></div>
   </div>
@@ -262,7 +256,6 @@ const DEFAULT_SCORING = {draw:0.5, groupWin:1, r32:2, r16:3, qf:4, sf:6, final:8
 let state = {
   players:['',''],
   scoring:{...DEFAULT_SCORING},
-  apiKey:'',
   draft:null,          // {players:[{name,teams:[{team,group}]}]}
   results:{}           // teamName -> {groupWins, draws, stageReached}
 };
@@ -325,11 +318,6 @@ document.getElementById('reset-scoring').addEventListener('click',()=>{
   state.scoring={...DEFAULT_SCORING};save();renderScoring();renderBoard();renderDraft();renderRulesScoring();
 });
 
-/* ===================== SETUP: API KEY ===================== */
-const apiInput=document.getElementById('api-key');
-apiInput.value=state.apiKey;
-apiInput.addEventListener('input',e=>{state.apiKey=e.target.value.trim();save();});
-
 /* ===================== DRAFT ENGINE ===================== */
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
@@ -374,6 +362,15 @@ document.getElementById('copy-draft').addEventListener('click',()=>{
   if(!state.draft){alert('Run a draft first.');return;}
   navigator.clipboard.writeText(JSON.stringify(state.draft,null,2));
   document.getElementById('draft-status').textContent='Copied draft JSON to clipboard.';
+});
+
+document.getElementById('clear-draft').addEventListener('click',()=>{
+  if(!state.draft){document.getElementById('draft-status').textContent='Nothing to clear.';return;}
+  if(!confirm('Clear the current draft and all scores? Players, point values, and API key are kept.')) return;
+  state.draft=null; state.results={};
+  save();
+  document.getElementById('draft-status').textContent='Draft cleared — ready for a fresh draft.';
+  renderDraft(); renderBoard();
 });
 
 function teamPoints(teamName){
@@ -452,59 +449,9 @@ function renderBoard(){
   });
 }
 
-/* ===================== API FETCH ===================== */
-// football-data.org WC competition code. Maps fixtures -> per-team groupWins/draws/stageReached.
-async function refreshFromAPI(){
-  const status=document.getElementById('board-status');
-  if(!state.draft){status.textContent='Run a draft first.';return;}
-  if(!state.apiKey){status.textContent='No API key set (Setup tab). Use Manual scores instead.';return;}
-  status.textContent='Fetching from football-data.org…';
-  try{
-    const res=await fetch('https://api.football-data.org/v4/competitions/WC/matches',{
-      headers:{'X-Auth-Token':state.apiKey}
-    });
-    if(!res.ok){ status.textContent=`API error ${res.status}. Check key / rate limit (10/min).`; return; }
-    const data=await res.json();
-    ingestMatches(data.matches||[]);
-    save(); renderBoard(); renderDraft();
-    status.textContent=`Updated from ${ (data.matches||[]).length } matches ✓`;
-  }catch(e){
-    status.textContent='Network/CORS error — football-data.org may block browser calls. Use Manual scores.';
-  }
-}
-function ingestMatches(matches){
-  const r={};
-  const ensure=t=>{ if(!r[t]) r[t]={groupWins:0,draws:0,stageReached:null}; return r[t]; };
-  const stageRank={'LAST_32':'r32','LAST_16':'r16','QUARTER_FINALS':'qf','SEMI_FINALS':'sf','FINAL':'final'};
-  const order=['r32','r16','qf','sf','final','champ'];
-  matches.forEach(m=>{
-    const h=m.homeTeam?.name, a=m.awayTeam?.name;
-    if(!h||!a) return;
-    const stage=m.stage;
-    const winner=m.score?.winner; // HOME_TEAM / AWAY_TEAM / DRAW
-    if(stage==='GROUP_STAGE'){
-      if(m.status==='FINISHED'){
-        if(winner==='DRAW'){ ensure(h).draws++; ensure(a).draws++; }
-        else if(winner==='HOME_TEAM'){ ensure(h).groupWins++; }
-        else if(winner==='AWAY_TEAM'){ ensure(a).groupWins++; }
-      }
-    } else if(stageRank[stage]){
-      // both teams reached this knockout stage
-      const st=stageRank[stage];
-      [h,a].forEach(t=>{ const o=ensure(t); if(rankGE(st,o.stageReached,order)) o.stageReached=st; });
-      // winner of final = champ
-      if(stage==='FINAL' && m.status==='FINISHED' && winner && winner!=='DRAW'){
-        const champ=winner==='HOME_TEAM'?h:a; ensure(champ).stageReached='champ';
-      }
-    }
-  });
-  state.results=r;
-}
-function rankGE(a,b,order){ if(!b) return true; return order.indexOf(a)>=order.indexOf(b); }
-
-document.getElementById('refresh-board').addEventListener('click',refreshFromAPI);
-
-/* ---- Manual scores: simple prompt-based entry per team ---- */
+/* ===================== SCORE ENTRY ===================== */
+/* ---- Score entry: edit each team's results in-browser (rarely needed —
+   the nightly GitHub Action computes scores automatically). ---- */
 document.getElementById('manual-board').addEventListener('click',()=>{
   if(!state.draft){alert('Run a draft first.');return;}
   openManual();
