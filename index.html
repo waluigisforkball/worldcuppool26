@@ -104,7 +104,29 @@ button.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
 .tp .grp{background:var(--accent);color:#fff;font-size:9px;font-weight:900;border-radius:5px;padding:1px 5px;}
 .tp .ep{background:var(--gold);color:#15120a;font-size:10px;font-weight:900;border-radius:5px;padding:1px 5px;}
 
-/* ---------- leaderboard ---------- */
+/* ---------- reveal animation ---------- */
+.reveal-card{position:relative;margin-bottom:16px;}
+.reveal-shadow{position:absolute;top:5px;left:5px;right:-5px;bottom:-5px;background:var(--border-dark);border-radius:16px;z-index:0;}
+.reveal-box{position:relative;z-index:1;background:var(--surface);border:2.5px solid var(--border);
+  border-left:7px solid var(--accent);border-radius:16px;overflow:hidden;}
+.reveal-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;}
+.reveal-name{font-family:'Nunito',sans-serif;font-weight:900;font-size:21px;}
+.reveal-btn{font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;letter-spacing:.5px;
+  text-transform:uppercase;background:var(--accent);color:#fff;border:none;border-radius:9px;
+  padding:9px 16px;cursor:pointer;transition:transform .12s,background .12s;}
+.reveal-btn:hover{transform:translate(-1px,-1px);}
+.reveal-btn:active{transform:translate(1px,1px);}
+.reveal-btn.done{background:var(--pitch);cursor:default;transform:none;}
+.reveal-teams{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 16px;min-height:0;}
+.reveal-teams.hidden-teams{padding:0;}
+.rt{display:inline-flex;align-items:center;gap:6px;
+  background:var(--accent-light);color:var(--accent);font-weight:800;font-size:13px;
+  padding:6px 11px;border-radius:9px;
+  opacity:0;transform:translateY(18px) scale(0.85);
+  transition:opacity .35s cubic-bezier(.34,1.56,.64,1), transform .35s cubic-bezier(.34,1.56,.64,1);}
+.rt.show{opacity:1;transform:translateY(0) scale(1);}
+.rt .grp{background:var(--accent);color:#fff;font-size:9px;font-weight:900;border-radius:5px;padding:1px 5px;}
+.reveal-count{font-size:12px;color:var(--text-muted);font-weight:700;}
 .lb-row{display:flex;align-items:center;gap:12px;padding:13px 15px;}
 .lb-rank{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;color:var(--text-dim);width:32px;text-align:center;}
 .lb-rank.r1{color:var(--gold);}.lb-rank.r2{color:#9aa0a6;}.lb-rank.r3{color:#cd7f32;}
@@ -218,6 +240,7 @@ button.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
       <div class="btn-row" style="margin-top:0;">
         <button class="btn" id="manual-board">Enter / edit scores</button>
         <button class="btn pitch sm" id="publish-board">⬇ Export roster.json</button>
+        <button class="btn ghost sm" id="export-standings">⬇ Export standings.json</button>
       </div>
       <div class="status" id="board-status">Run a draft first.</div>
     </div></div>
@@ -389,19 +412,44 @@ function renderDraft(){
   const wrap=document.getElementById('draft-results');
   if(!state.draft){ wrap.innerHTML='<div class="empty">No draft yet. Hit Run Draft above.</div>'; return; }
   wrap.innerHTML='';
-  state.draft.players.forEach(pl=>{
-    const total=pl.teams.reduce((s,t)=>s+teamPoints(t.team).pts,0);
-    const pills=pl.teams.map(t=>{
-      const extra=t.bonus?'<span class="ep">+1</span>':'';
-      return `<span class="tp"><span class="grp">${t.group}</span>${t.team}</span>`;
-    }).join('');
-    const rw=document.createElement('div'); rw.className='roster-wrap';
-    rw.innerHTML=`<div class="roster-shadow"></div><div class="roster">
-      <h3>${pl.name}<span class="pts">${pl.teams.length} teams</span></h3>
-      <div class="team-pills">${pills}</div></div>`;
-    wrap.appendChild(rw);
+
+  state.draft.players.forEach((pl,pi)=>{
+    const card=document.createElement('div'); card.className='reveal-card';
+    const n=pl.teams.length;
+    const pillsHtml=pl.teams.map(t=>
+      `<span class="rt"><span class="grp">${t.group}</span>${t.team}</span>`
+    ).join('');
+
+    card.innerHTML=`<div class="reveal-shadow"></div>
+      <div class="reveal-box">
+        <div class="reveal-header">
+          <div>
+            <div class="reveal-name">${pl.name}</div>
+            <div class="reveal-count" id="rc-${pi}">${n} teams · click to reveal</div>
+          </div>
+          <button class="reveal-btn" id="rb-${pi}">⚽ Reveal</button>
+        </div>
+        <div class="reveal-teams hidden-teams" id="rt-${pi}">${pillsHtml}</div>
+      </div>`;
+    wrap.appendChild(card);
+
+    document.getElementById(`rb-${pi}`).addEventListener('click', function(){
+      if(this.classList.contains('done')) return;
+      this.classList.add('done');
+      this.textContent='✓ Revealed';
+      const teamsEl=document.getElementById(`rt-${pi}`);
+      const countEl=document.getElementById(`rc-${pi}`);
+      teamsEl.classList.remove('hidden-teams');
+      countEl.textContent=`${n} teams`;
+      // stagger each team pill in
+      const pills=teamsEl.querySelectorAll('.rt');
+      pills.forEach((pill,i)=>{
+        setTimeout(()=>pill.classList.add('show'), i * 80);
+      });
+    });
   });
-  // unassigned teams (left out to keep rosters even)
+
+  // unassigned teams — no reveal button, just show quietly at the bottom
   const un=state.draft.unassigned||[];
   if(un.length){
     const pills=un.map(t=>`<span class="tp" style="background:#f0ece2;color:var(--text-muted);"><span class="grp" style="background:var(--text-dim);">${t.group}</span>${t.team}</span>`).join('');
@@ -542,6 +590,7 @@ function renderViewBanner(){
 /* Export the locked rosters + scoring for the nightly Action to read. */
 function exportRoster(){
   if(!state.draft){alert('Run a draft first.');return;}
+  // roster.json = draft + scoring. The nightly Action reads this to know who owns which teams.
   const roster={draft:state.draft,scoring:state.scoring};
   const blob=new Blob([JSON.stringify(roster,null,2)],{type:'application/json'});
   const url=URL.createObjectURL(blob);
@@ -549,8 +598,37 @@ function exportRoster(){
   URL.revokeObjectURL(url);
   document.getElementById('board-status').innerHTML='Downloaded <b>roster.json</b> — commit it to your repo root. The nightly Action reads it to compute scores.';
 }
+
+function exportStandings(){
+  // Emergency override: if you've entered manual scores and want them to go live
+  // without waiting for the nightly Action, export standings.json directly and commit it.
+  if(!state.draft){alert('Run a draft first.');return;}
+  const lb=computeLeaderboard();
+  const out={
+    updated: new Date().toISOString(),
+    scoring: state.scoring,
+    note: 'Manually exported — nightly Action will overwrite this on next run.',
+    standings: lb.map(p=>({
+      name: p.name,
+      total: p.total,
+      teams: p.teams.map(t=>({
+        name: t.name, group: t.group, pts: t.pts,
+        stage: t.stage||null,
+        groupWins: state.results[t.name]?.groupWins||0,
+        draws: state.results[t.name]?.draws||0,
+      }))
+    }))
+  };
+  const blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='standings.json'; a.click();
+  URL.revokeObjectURL(url);
+  document.getElementById('board-status').innerHTML='Downloaded <b>standings.json</b> — commit this to your repo root to push manual scores live. The nightly Action will overwrite it on its next run.';
+}
 const pubBtn=document.getElementById('publish-board');
 if(pubBtn) pubBtn.addEventListener('click',exportRoster);
+const expStandingsBtn=document.getElementById('export-standings');
+if(expStandingsBtn) expStandingsBtn.addEventListener('click',exportStandings);
 
 /* On load, try to fetch standings.json (written nightly by the Action).
    If present AND this visitor isn't the commissioner, show it read-only. */
