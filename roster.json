@@ -1,0 +1,290 @@
+{
+  "draft": {
+    "players": [
+      {
+        "name": "Mike F",
+        "teams": [
+          {
+            "team": "Qatar",
+            "group": "B"
+          },
+          {
+            "team": "Bosnia and Herzegovina",
+            "group": "B"
+          },
+          {
+            "team": "Algeria",
+            "group": "J"
+          }
+        ]
+      },
+      {
+        "name": "Ally",
+        "teams": [
+          {
+            "team": "South Korea",
+            "group": "A"
+          },
+          {
+            "team": "South Africa",
+            "group": "A"
+          },
+          {
+            "team": "England",
+            "group": "L"
+          }
+        ]
+      },
+      {
+        "name": "Big Tob",
+        "teams": [
+          {
+            "team": "Sweden",
+            "group": "F"
+          },
+          {
+            "team": "Iraq",
+            "group": "I"
+          },
+          {
+            "team": "Portugal",
+            "group": "K"
+          }
+        ]
+      },
+      {
+        "name": "Toby",
+        "teams": [
+          {
+            "team": "Canada",
+            "group": "B"
+          },
+          {
+            "team": "Paraguay",
+            "group": "D"
+          },
+          {
+            "team": "Panama",
+            "group": "L"
+          }
+        ]
+      },
+      {
+        "name": "Ken",
+        "teams": [
+          {
+            "team": "Haiti",
+            "group": "C"
+          },
+          {
+            "team": "Egypt",
+            "group": "G"
+          },
+          {
+            "team": "Croatia",
+            "group": "L"
+          }
+        ]
+      },
+      {
+        "name": "Jake",
+        "teams": [
+          {
+            "team": "Saudi Arabia",
+            "group": "H"
+          },
+          {
+            "team": "Spain",
+            "group": "H"
+          },
+          {
+            "team": "Argentina",
+            "group": "J"
+          }
+        ]
+      },
+      {
+        "name": "Nick P",
+        "teams": [
+          {
+            "team": "Czechia",
+            "group": "A"
+          },
+          {
+            "team": "Türkiye",
+            "group": "D"
+          },
+          {
+            "team": "Ghana",
+            "group": "L"
+          }
+        ]
+      },
+      {
+        "name": "Mike K",
+        "teams": [
+          {
+            "team": "Scotland",
+            "group": "C"
+          },
+          {
+            "team": "Curaçao",
+            "group": "E"
+          },
+          {
+            "team": "Tunisia",
+            "group": "F"
+          }
+        ]
+      },
+      {
+        "name": "Nathan",
+        "teams": [
+          {
+            "team": "Morocco",
+            "group": "C"
+          },
+          {
+            "team": "Ivory Coast",
+            "group": "E"
+          },
+          {
+            "team": "France",
+            "group": "I"
+          }
+        ]
+      },
+      {
+        "name": "Luke",
+        "teams": [
+          {
+            "team": "Brazil",
+            "group": "C"
+          },
+          {
+            "team": "Australia",
+            "group": "D"
+          },
+          {
+            "team": "Jordan",
+            "group": "J"
+          }
+        ]
+      },
+      {
+        "name": "Kevin",
+        "teams": [
+          {
+            "team": "Switzerland",
+            "group": "B"
+          },
+          {
+            "team": "Japan",
+            "group": "F"
+          },
+          {
+            "team": "Colombia",
+            "group": "K"
+          }
+        ]
+      },
+      {
+        "name": "Frank",
+        "teams": [
+          {
+            "team": "Germany",
+            "group": "E"
+          },
+          {
+            "team": "Ecuador",
+            "group": "E"
+          },
+          {
+            "team": "Norway",
+            "group": "I"
+          }
+        ]
+      },
+      {
+        "name": "Jim",
+        "teams": [
+          {
+            "team": "Netherlands",
+            "group": "F"
+          },
+          {
+            "team": "Cape Verde",
+            "group": "H"
+          },
+          {
+            "team": "DR Congo",
+            "group": "K"
+          }
+        ]
+      },
+      {
+        "name": "Dylan",
+        "teams": [
+          {
+            "team": "Mexico",
+            "group": "A"
+          },
+          {
+            "team": "USA",
+            "group": "D"
+          },
+          {
+            "team": "Uzbekistan",
+            "group": "K"
+          }
+        ]
+      },
+      {
+        "name": "Ricki",
+        "teams": [
+          {
+            "team": "New Zealand",
+            "group": "G"
+          },
+          {
+            "team": "Belgium",
+            "group": "G"
+          },
+          {
+            "team": "Uruguay",
+            "group": "H"
+          }
+        ]
+      },
+      {
+        "name": "Pat",
+        "teams": [
+          {
+            "team": "Iran",
+            "group": "G"
+          },
+          {
+            "team": "Senegal",
+            "group": "I"
+          },
+          {
+            "team": "Austria",
+            "group": "J"
+          }
+        ]
+      }
+    ],
+    "baseTeams": 3,
+    "unassigned": []
+  },
+  "scoring": {
+    "draw": 0.5,
+    "groupWin": 1,
+    "r32": 2,
+    "r16": 3,
+    "qf": 4,
+    "sf": 6,
+    "final": 8,
+    "champ": 10
+  }
+}
