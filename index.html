@@ -547,7 +547,12 @@ document.querySelectorAll('.tab').forEach(t=>{
     document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
     t.classList.add('active');
     document.getElementById('view-'+t.dataset.view).classList.add('active');
-    if(t.dataset.view==='board') renderBoard();
+    if(t.dataset.view==='board'){
+      renderBoard();
+      // if visitor is in published-view mode, re-render from cached data
+      if(isPublishedFlag && window.__publishedStandings) renderBoardPublished();
+      renderViewBanner();
+    }
     if(t.dataset.view==='draft') renderDraft();
   });
 });
@@ -645,6 +650,10 @@ async function loadPublishedStandings(){
       if(data.scoring) state.scoring = data.scoring;
       isPublishedFlag = true;
       renderRulesScoring(); renderBoardPublished(); renderViewBanner();
+      // if the user is already on the standings tab, make sure it's visible
+      if(document.getElementById('view-board').classList.contains('active')){
+        renderBoardPublished(); renderViewBanner();
+      }
     }
   }catch(e){ /* no standings.json yet — fine */ }
 }
