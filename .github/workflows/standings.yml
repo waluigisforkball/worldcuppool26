@@ -1,0 +1,39 @@
+name: Update WC pool standings
+
+on:
+  schedule:
+    # 06:30 UTC = 2:30am ET (DST) — runs nightly after the day's matches finish.
+    - cron: "30 6 * * *"
+  workflow_dispatch:        # lets you trigger a run manually from the Actions tab
+
+permissions:
+  contents: write           # allows the job to commit standings.json
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build standings
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+        run: python build_standings.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "wc-pool-bot"
+          git config user.email "actions@github.com"
+          git add standings.json
+          if git diff --staged --quiet; then
+            echo "No changes to standings."
+          else
+            git commit -m "Nightly standings update $(date -u +%Y-%m-%d)"
+            git push
+          fi
