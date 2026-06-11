@@ -1,0 +1,495 @@
+{
+  "updated": "2026-06-11T16:49:45+00:00",
+  "scoring": {
+    "draw": 0.5,
+    "groupWin": 1,
+    "r32": 2,
+    "r16": 3,
+    "qf": 4,
+    "sf": 6,
+    "final": 8,
+    "champ": 10
+  },
+  "standings": [
+    {
+      "name": "Mike F",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "Qatar",
+          "group": "B",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Bosnia and Herzegovina",
+          "group": "B",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Algeria",
+          "group": "J",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Ally",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "South Korea",
+          "group": "A",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "South Africa",
+          "group": "A",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "England",
+          "group": "L",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Big Tob",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "Sweden",
+          "group": "F",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Iraq",
+          "group": "I",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Portugal",
+          "group": "K",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Toby",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "Canada",
+          "group": "B",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Paraguay",
+          "group": "D",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Panama",
+          "group": "L",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Ken",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "Haiti",
+          "group": "C",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Egypt",
+          "group": "G",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Croatia",
+          "group": "L",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Jake",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "Saudi Arabia",
+          "group": "H",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Spain",
+          "group": "H",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Argentina",
+          "group": "J",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Nick P",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "Czechia",
+          "group": "A",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Türkiye",
+          "group": "D",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Ghana",
+          "group": "L",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Mike K",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "Scotland",
+          "group": "C",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Curaçao",
+          "group": "E",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Tunisia",
+          "group": "F",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Nathan",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "Morocco",
+          "group": "C",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Ivory Coast",
+          "group": "E",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "France",
+          "group": "I",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Luke",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "Brazil",
+          "group": "C",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Australia",
+          "group": "D",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Jordan",
+          "group": "J",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Kevin",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "Switzerland",
+          "group": "B",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Japan",
+          "group": "F",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Colombia",
+          "group": "K",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Frank",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "Germany",
+          "group": "E",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Ecuador",
+          "group": "E",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Norway",
+          "group": "I",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Jim",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "Netherlands",
+          "group": "F",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Cape Verde",
+          "group": "H",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "DR Congo",
+          "group": "K",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Dylan",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "Mexico",
+          "group": "A",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "USA",
+          "group": "D",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Uzbekistan",
+          "group": "K",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Ricki",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "New Zealand",
+          "group": "G",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Belgium",
+          "group": "G",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Uruguay",
+          "group": "H",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Pat",
+      "total": 0.0,
+      "teams": [
+        {
+          "name": "Iran",
+          "group": "G",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Senegal",
+          "group": "I",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Austria",
+          "group": "J",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    }
+  ]
+}
