@@ -149,6 +149,19 @@ def main():
     players = roster["draft"]["players"]
 
     matches = fetch_matches(token)
+    
+    # Debug: print all unique team names and statuses the API returned
+    api_teams = set()
+    api_statuses = set()
+    for m in matches:
+        h = (m.get("homeTeam") or {}).get("name")
+        a = (m.get("awayTeam") or {}).get("name")
+        if h: api_teams.add(h)
+        if a: api_teams.add(a)
+        api_statuses.add(m.get("status"))
+    print(f"API returned {len(matches)} matches, statuses: {api_statuses}")
+    print(f"API team names: {sorted(api_teams)}")
+    
     results = build_results(matches)
 
     standings = []
