@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-11T16:49:45+00:00",
+  "updated": "2026-06-12T10:48:12+00:00",
   "scoring": {
     "draw": 0.5,
     "groupWin": 1,
@@ -11,6 +11,66 @@
     "champ": 10
   },
   "standings": [
+    {
+      "name": "Ally",
+      "total": 1.0,
+      "teams": [
+        {
+          "name": "South Korea",
+          "group": "A",
+          "pts": 1.0,
+          "stage": null,
+          "groupWins": 1,
+          "draws": 0
+        },
+        {
+          "name": "South Africa",
+          "group": "A",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "England",
+          "group": "L",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Dylan",
+      "total": 1.0,
+      "teams": [
+        {
+          "name": "Mexico",
+          "group": "A",
+          "pts": 1.0,
+          "stage": null,
+          "groupWins": 1,
+          "draws": 0
+        },
+        {
+          "name": "USA",
+          "group": "D",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Uzbekistan",
+          "group": "K",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
     {
       "name": "Mike F",
       "total": 0.0,
@@ -34,36 +94,6 @@
         {
           "name": "Algeria",
           "group": "J",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        }
-      ]
-    },
-    {
-      "name": "Ally",
-      "total": 0.0,
-      "teams": [
-        {
-          "name": "South Korea",
-          "group": "A",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "South Africa",
-          "group": "A",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "England",
-          "group": "L",
           "pts": 0.0,
           "stage": null,
           "groupWins": 0,
@@ -393,36 +423,6 @@
         },
         {
           "name": "DR Congo",
-          "group": "K",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        }
-      ]
-    },
-    {
-      "name": "Dylan",
-      "total": 0.0,
-      "teams": [
-        {
-          "name": "Mexico",
-          "group": "A",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "USA",
-          "group": "D",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "Uzbekistan",
           "group": "K",
           "pts": 0.0,
           "stage": null,
