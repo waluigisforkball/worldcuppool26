@@ -48,9 +48,13 @@ NAME_ALIASES = {
     "Republic of Korea": "South Korea",
     "Czech Republic": "Czechia",
     "Cabo Verde": "Cape Verde",
+    "Cape Verde Islands": "Cape Verde",
     "DR Congo": "DR Congo",
     "Congo DR": "DR Congo",
     "United States": "USA",
+    "Bosnia-Herzegovina": "Bosnia and Herzegovina",
+    "Bosnia & Herzegovina": "Bosnia and Herzegovina",
+    "Bosnia and Herzegovina": "Bosnia and Herzegovina",
 }
 
 
