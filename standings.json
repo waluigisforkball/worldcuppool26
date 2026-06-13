@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-12T13:21:59+00:00",
+  "updated": "2026-06-13T09:42:10+00:00",
   "scoring": {
     "draw": 0.5,
     "groupWin": 1,
@@ -11,6 +11,36 @@
     "champ": 10
   },
   "standings": [
+    {
+      "name": "Dylan",
+      "total": 2.0,
+      "teams": [
+        {
+          "name": "Mexico",
+          "group": "A",
+          "pts": 1.0,
+          "stage": null,
+          "groupWins": 1,
+          "draws": 0
+        },
+        {
+          "name": "USA",
+          "group": "D",
+          "pts": 1.0,
+          "stage": null,
+          "groupWins": 1,
+          "draws": 0
+        },
+        {
+          "name": "Uzbekistan",
+          "group": "K",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
     {
       "name": "Ally",
       "total": 1.0,
@@ -42,19 +72,19 @@
       ]
     },
     {
-      "name": "Dylan",
-      "total": 1.0,
+      "name": "Toby",
+      "total": 0.5,
       "teams": [
         {
-          "name": "Mexico",
-          "group": "A",
-          "pts": 1.0,
+          "name": "Canada",
+          "group": "B",
+          "pts": 0.5,
           "stage": null,
-          "groupWins": 1,
-          "draws": 0
+          "groupWins": 0,
+          "draws": 1
         },
         {
-          "name": "USA",
+          "name": "Paraguay",
           "group": "D",
           "pts": 0.0,
           "stage": null,
@@ -62,8 +92,8 @@
           "draws": 0
         },
         {
-          "name": "Uzbekistan",
-          "group": "K",
+          "name": "Panama",
+          "group": "L",
           "pts": 0.0,
           "stage": null,
           "groupWins": 0,
@@ -124,36 +154,6 @@
         {
           "name": "Portugal",
           "group": "K",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        }
-      ]
-    },
-    {
-      "name": "Toby",
-      "total": 0.0,
-      "teams": [
-        {
-          "name": "Canada",
-          "group": "B",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "Paraguay",
-          "group": "D",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "Panama",
-          "group": "L",
           "pts": 0.0,
           "stage": null,
           "groupWins": 0,
