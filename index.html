@@ -151,7 +151,7 @@ button.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
 .status{font-size:12px;font-weight:800;color:var(--text-muted);text-align:center;margin-top:10px;}
 .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
 .divider{height:2px;background:var(--border);margin:18px 0;border-radius:2px;}
-.flag{font-size:15px;}
+.flag{font-size:16px;line-height:1;margin-right:2px;}
 @media(max-width:480px){.lb-rank{font-size:18px;width:26px;}.lb-pts{font-size:18px;}}
 </style>
 </head>
@@ -161,17 +161,17 @@ button.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
   <div class="logo"><span class="ball">⚽</span>Group <span>Stage</span></div>
   <div class="tagline">World Cup 2026 · Draft Pool</div>
   <div class="tabs">
-    <button class="tab active" data-view="home">Home</button>
-    <button class="tab" data-view="setup">Setup</button>
-    <button class="tab" data-view="draft">Draft</button>
-    <button class="tab" data-view="board">Standings</button>
+    <button class="tab" data-view="home">Home</button>
+    <button class="tab tab-admin" data-view="setup" style="display:none;">Setup</button>
+    <button class="tab tab-admin" data-view="draft" style="display:none;">Draft</button>
+    <button class="tab active" data-view="board">Standings</button>
   </div>
 </div>
 
 <div class="main">
 
   <!-- ============ HOME / RULES ============ -->
-  <div class="view active" id="view-home">
+  <div class="view" id="view-home">
     <div class="card-wrap"><div class="card-shadow"></div><div class="card">
       <div style="font-family:'Nunito';font-weight:900;font-size:22px;line-height:1.1;">⚽ The World Cup 2026 Pool</div>
       <div class="note" style="font-size:14px;margin-top:8px;">All 48 teams get drafted out among the players. Your teams earn you points as they win games and advance through the tournament. Most points when the Final ends wins the pool. Check back here any time to see where the standings sit.</div>
@@ -234,7 +234,7 @@ button.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
   </div>
 
   <!-- ============ STANDINGS ============ -->
-  <div class="view" id="view-board">
+  <div class="view active" id="view-board">
     <div id="view-mode-banner"></div>
     <div class="card-wrap" id="admin-controls"><div class="card-shadow"></div><div class="card">
       <div class="btn-row" style="margin-top:0;">
@@ -274,6 +274,27 @@ const STAGE_LABEL = {
   final:'Reached Final', champ:'Champion'
 };
 const DEFAULT_SCORING = {draw:0.5, groupWin:1, r32:2, r16:3, qf:4, sf:6, final:8, champ:10};
+
+/* When true, hides Setup/Draft tabs and opens to Standings — tournament live mode.
+   Set to false to restore full admin tabs (e.g. to re-draft). */
+const LIVE_MODE = true;
+
+/* Flag emoji for each team name as used in the roster. */
+const FLAGS = {
+  'Mexico':'🇲🇽','South Africa':'🇿🇦','South Korea':'🇰🇷','Czechia':'🇨🇿',
+  'Canada':'🇨🇦','Switzerland':'🇨🇭','Qatar':'🇶🇦','Bosnia and Herzegovina':'🇧🇦',
+  'Brazil':'🇧🇷','Morocco':'🇲🇦','Scotland':'🏴󠁧󠁢󠁳󠁣󠁴󠁿','Haiti':'🇭🇹',
+  'USA':'🇺🇸','Paraguay':'🇵🇾','Australia':'🇦🇺','Türkiye':'🇹🇷',
+  'Germany':'🇩🇪','Curaçao':'🇨🇼','Ivory Coast':'🇨🇮','Ecuador':'🇪🇨',
+  'Netherlands':'🇳🇱','Japan':'🇯🇵','Sweden':'🇸🇪','Tunisia':'🇹🇳',
+  'Belgium':'🇧🇪','Egypt':'🇪🇬','Iran':'🇮🇷','New Zealand':'🇳🇿',
+  'Spain':'🇪🇸','Cape Verde':'🇨🇻','Saudi Arabia':'🇸🇦','Uruguay':'🇺🇾',
+  'France':'🇫🇷','Senegal':'🇸🇳','Iraq':'🇮🇶','Norway':'🇳🇴',
+  'Argentina':'🇦🇷','Algeria':'🇩🇿','Austria':'🇦🇹','Jordan':'🇯🇴',
+  'Portugal':'🇵🇹','Colombia':'🇨🇴','Uzbekistan':'🇺🇿','DR Congo':'🇨🇩',
+  'England':'🏴󠁧󠁢󠁥󠁮󠁧󠁿','Croatia':'🇭🇷','Ghana':'🇬🇭','Panama':'🇵🇦'
+};
+function flag(team){ return FLAGS[team] || '⚽'; }
 
 /* ===================== STATE ===================== */
 let state = {
@@ -479,20 +500,17 @@ function renderBoard(){
     const rcls=i===0?'r1':i===1?'r2':i===2?'r3':'';
     const detail=p.teams.sort((a,b)=>b.pts-a.pts).map(t=>{
       const stg=t.stage?STAGE_LABEL[t.stage]:'In group stage';
-      return `<div class="lb-team"><span class="tn">${t.name} <span class="stg">${stg}</span></span><span class="tpts">${t.pts}</span></div>`;
+      return `<div class="lb-team"><span class="tn"><span class="flag">${flag(t.name)}</span> ${t.name} <span class="stg">${stg}</span></span><span class="tpts">${t.pts}</span></div>`;
     }).join('');
     const rw=document.createElement('div'); rw.className='roster-wrap';
     rw.innerHTML=`<div class="roster-shadow"></div><div class="roster" style="border-left-color:${i===0?'var(--gold)':'var(--accent)'};padding:0;">
-      <div class="lb-row" style="cursor:pointer;">
+      <div class="lb-row">
         <div class="lb-rank ${rcls}">${i+1}</div>
-        <div style="flex:1;"><div class="lb-name">${p.name}</div><div class="lb-sub">${p.teams.length} teams · tap to view roster</div></div>
+        <div style="flex:1;"><div class="lb-name">${p.name}</div><div class="lb-sub">${p.teams.length} teams</div></div>
         <div class="lb-pts">${(+p.total.toFixed(1))}</div>
-        <div class="lb-chev">›</div>
       </div>
-      <div class="lb-detail" style="padding:0 15px 13px;">${detail}</div>
+      <div class="lb-detail open" style="padding:0 15px 13px;">${detail}</div>
     </div>`;
-    const rowEl=rw.querySelector('.lb-row');
-    rowEl.addEventListener('click',()=>{rowEl.classList.toggle('open');rw.querySelector('.lb-detail').classList.toggle('open');});
     wrap.appendChild(rw);
   });
 }
@@ -667,20 +685,17 @@ function renderBoardPublished(){
     const rcls=i===0?'r1':i===1?'r2':i===2?'r3':'';
     const detail=p.teams.map(t=>{
       const stg=t.stage?STAGE_LABEL[t.stage]:'In group stage';
-      return `<div class="lb-team"><span class="tn">${t.name} <span class="stg">${stg}</span></span><span class="tpts">${t.pts}</span></div>`;
+      return `<div class="lb-team"><span class="tn"><span class="flag">${flag(t.name)}</span> ${t.name} <span class="stg">${stg}</span></span><span class="tpts">${t.pts}</span></div>`;
     }).join('');
     const rw=document.createElement('div'); rw.className='roster-wrap';
     rw.innerHTML=`<div class="roster-shadow"></div><div class="roster" style="border-left-color:${i===0?'var(--gold)':'var(--accent)'};padding:0;">
-      <div class="lb-row" style="cursor:pointer;">
+      <div class="lb-row">
         <div class="lb-rank ${rcls}">${i+1}</div>
-        <div style="flex:1;"><div class="lb-name">${p.name}</div><div class="lb-sub">${p.teams.length} teams · tap to view roster</div></div>
+        <div style="flex:1;"><div class="lb-name">${p.name}</div><div class="lb-sub">${p.teams.length} teams</div></div>
         <div class="lb-pts">${(+p.total.toFixed(1))}</div>
-        <div class="lb-chev">›</div>
       </div>
-      <div class="lb-detail" style="padding:0 15px 13px;">${detail}</div>
+      <div class="lb-detail open" style="padding:0 15px 13px;">${detail}</div>
     </div>`;
-    const rowEl=rw.querySelector('.lb-row');
-    rowEl.addEventListener('click',()=>{rowEl.classList.toggle('open');rw.querySelector('.lb-detail').classList.toggle('open');});
     wrap.appendChild(rw);
   });
 }
@@ -689,6 +704,15 @@ function renderBoardPublished(){
 renderPlayers(); updateMath(); renderScoring(); renderRulesScoring();
 renderDraft(); renderBoard(); renderViewBanner();
 loadPublishedStandings();
+
+/* LIVE_MODE hides Setup/Draft for everyone. The commissioner (this browser has a
+   saved draft) still gets them so they can manage things if needed. */
+if(LIVE_MODE && state.draft){
+  document.querySelectorAll('.tab-admin').forEach(t=>t.style.display='');
+}
+if(!LIVE_MODE){
+  document.querySelectorAll('.tab-admin').forEach(t=>t.style.display='');
+}
 </script>
 </body>
 </html>
