@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13T09:42:10+00:00",
+  "updated": "2026-06-13T14:23:57+00:00",
   "scoring": {
     "draw": 0.5,
     "groupWin": 1,
@@ -72,6 +72,36 @@
       ]
     },
     {
+      "name": "Mike F",
+      "total": 0.5,
+      "teams": [
+        {
+          "name": "Bosnia and Herzegovina",
+          "group": "B",
+          "pts": 0.5,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 1
+        },
+        {
+          "name": "Qatar",
+          "group": "B",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Algeria",
+          "group": "J",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
       "name": "Toby",
       "total": 0.5,
       "teams": [
@@ -94,36 +124,6 @@
         {
           "name": "Panama",
           "group": "L",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        }
-      ]
-    },
-    {
-      "name": "Mike F",
-      "total": 0.0,
-      "teams": [
-        {
-          "name": "Qatar",
-          "group": "B",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "Bosnia and Herzegovina",
-          "group": "B",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "Algeria",
-          "group": "J",
           "pts": 0.0,
           "stage": null,
           "groupWins": 0,
