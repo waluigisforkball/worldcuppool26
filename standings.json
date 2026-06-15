@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14T15:41:38+00:00",
+  "updated": "2026-06-15T12:48:06+00:00",
   "scoring": {
     "draw": 0.5,
     "groupWin": 1,
@@ -34,6 +34,36 @@
         {
           "name": "Uzbekistan",
           "group": "K",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Nathan",
+      "total": 1.5,
+      "teams": [
+        {
+          "name": "Ivory Coast",
+          "group": "E",
+          "pts": 1.0,
+          "stage": null,
+          "groupWins": 1,
+          "draws": 0
+        },
+        {
+          "name": "Morocco",
+          "group": "C",
+          "pts": 0.5,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 1
+        },
+        {
+          "name": "France",
+          "group": "I",
           "pts": 0.0,
           "stage": null,
           "groupWins": 0,
@@ -132,6 +162,36 @@
       ]
     },
     {
+      "name": "Big Tob",
+      "total": 1.0,
+      "teams": [
+        {
+          "name": "Sweden",
+          "group": "F",
+          "pts": 1.0,
+          "stage": null,
+          "groupWins": 1,
+          "draws": 0
+        },
+        {
+          "name": "Iraq",
+          "group": "I",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Portugal",
+          "group": "K",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
       "name": "Mike K",
       "total": 1.0,
       "teams": [
@@ -154,6 +214,66 @@
         {
           "name": "Tunisia",
           "group": "F",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Kevin",
+      "total": 1.0,
+      "teams": [
+        {
+          "name": "Switzerland",
+          "group": "B",
+          "pts": 0.5,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 1
+        },
+        {
+          "name": "Japan",
+          "group": "F",
+          "pts": 0.5,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 1
+        },
+        {
+          "name": "Colombia",
+          "group": "K",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Frank",
+      "total": 1.0,
+      "teams": [
+        {
+          "name": "Germany",
+          "group": "E",
+          "pts": 1.0,
+          "stage": null,
+          "groupWins": 1,
+          "draws": 0
+        },
+        {
+          "name": "Ecuador",
+          "group": "E",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        },
+        {
+          "name": "Norway",
+          "group": "I",
           "pts": 0.0,
           "stage": null,
           "groupWins": 0,
@@ -192,87 +312,27 @@
       ]
     },
     {
-      "name": "Nathan",
+      "name": "Jim",
       "total": 0.5,
       "teams": [
         {
-          "name": "Morocco",
-          "group": "C",
+          "name": "Netherlands",
+          "group": "F",
           "pts": 0.5,
           "stage": null,
           "groupWins": 0,
           "draws": 1
         },
         {
-          "name": "Ivory Coast",
-          "group": "E",
+          "name": "Cape Verde",
+          "group": "H",
           "pts": 0.0,
           "stage": null,
           "groupWins": 0,
           "draws": 0
         },
         {
-          "name": "France",
-          "group": "I",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        }
-      ]
-    },
-    {
-      "name": "Kevin",
-      "total": 0.5,
-      "teams": [
-        {
-          "name": "Switzerland",
-          "group": "B",
-          "pts": 0.5,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 1
-        },
-        {
-          "name": "Japan",
-          "group": "F",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "Colombia",
-          "group": "K",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        }
-      ]
-    },
-    {
-      "name": "Big Tob",
-      "total": 0.0,
-      "teams": [
-        {
-          "name": "Sweden",
-          "group": "F",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "Iraq",
-          "group": "I",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "Portugal",
+          "name": "DR Congo",
           "group": "K",
           "pts": 0.0,
           "stage": null,
@@ -364,66 +424,6 @@
         {
           "name": "Ghana",
           "group": "L",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        }
-      ]
-    },
-    {
-      "name": "Frank",
-      "total": 0.0,
-      "teams": [
-        {
-          "name": "Germany",
-          "group": "E",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "Ecuador",
-          "group": "E",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "Norway",
-          "group": "I",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        }
-      ]
-    },
-    {
-      "name": "Jim",
-      "total": 0.0,
-      "teams": [
-        {
-          "name": "Netherlands",
-          "group": "F",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "Cape Verde",
-          "group": "H",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        },
-        {
-          "name": "DR Congo",
-          "group": "K",
           "pts": 0.0,
           "stage": null,
           "groupWins": 0,
