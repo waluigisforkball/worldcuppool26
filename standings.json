@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30T10:06:26+00:00",
+  "updated": "2026-07-01T10:28:55+00:00",
   "scoring": {
     "draw": 0.5,
     "groupWin": 1,
@@ -13,8 +13,16 @@
   "standings": [
     {
       "name": "Nathan",
-      "total": 16.5,
+      "total": 19.5,
       "teams": [
+        {
+          "name": "France",
+          "group": "I",
+          "pts": 8.0,
+          "stage": "r16",
+          "groupWins": 3,
+          "draws": 0
+        },
         {
           "name": "Morocco",
           "group": "C",
@@ -24,19 +32,71 @@
           "draws": 1
         },
         {
-          "name": "France",
-          "group": "I",
-          "pts": 5.0,
-          "stage": "r32",
-          "groupWins": 3,
-          "draws": 0
-        },
-        {
           "name": "Ivory Coast",
           "group": "E",
           "pts": 4.0,
           "stage": "r32",
           "groupWins": 2,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Frank",
+      "total": 14.5,
+      "teams": [
+        {
+          "name": "Norway",
+          "group": "I",
+          "pts": 7.0,
+          "stage": "r16",
+          "groupWins": 2,
+          "draws": 0
+        },
+        {
+          "name": "Germany",
+          "group": "E",
+          "pts": 4.0,
+          "stage": "r32",
+          "groupWins": 2,
+          "draws": 0
+        },
+        {
+          "name": "Ecuador",
+          "group": "E",
+          "pts": 3.5,
+          "stage": "r32",
+          "groupWins": 1,
+          "draws": 1
+        }
+      ]
+    },
+    {
+      "name": "Toby",
+      "total": 13.0,
+      "teams": [
+        {
+          "name": "Canada",
+          "group": "B",
+          "pts": 6.5,
+          "stage": "r16",
+          "groupWins": 1,
+          "draws": 1
+        },
+        {
+          "name": "Paraguay",
+          "group": "D",
+          "pts": 6.5,
+          "stage": "r16",
+          "groupWins": 1,
+          "draws": 1
+        },
+        {
+          "name": "Panama",
+          "group": "L",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
           "draws": 0
         }
       ]
@@ -72,36 +132,6 @@
       ]
     },
     {
-      "name": "Frank",
-      "total": 11.5,
-      "teams": [
-        {
-          "name": "Germany",
-          "group": "E",
-          "pts": 4.0,
-          "stage": "r32",
-          "groupWins": 2,
-          "draws": 0
-        },
-        {
-          "name": "Norway",
-          "group": "I",
-          "pts": 4.0,
-          "stage": "r32",
-          "groupWins": 2,
-          "draws": 0
-        },
-        {
-          "name": "Ecuador",
-          "group": "E",
-          "pts": 3.5,
-          "stage": "r32",
-          "groupWins": 1,
-          "draws": 1
-        }
-      ]
-    },
-    {
       "name": "Jim",
       "total": 11.5,
       "teams": [
@@ -132,6 +162,36 @@
       ]
     },
     {
+      "name": "Luke",
+      "total": 11.0,
+      "teams": [
+        {
+          "name": "Brazil",
+          "group": "C",
+          "pts": 7.5,
+          "stage": "r16",
+          "groupWins": 2,
+          "draws": 1
+        },
+        {
+          "name": "Australia",
+          "group": "D",
+          "pts": 3.5,
+          "stage": "r32",
+          "groupWins": 1,
+          "draws": 1
+        },
+        {
+          "name": "Jordan",
+          "group": "J",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
       "name": "Jake",
       "total": 10.5,
       "teams": [
@@ -158,36 +218,6 @@
           "stage": null,
           "groupWins": 0,
           "draws": 2
-        }
-      ]
-    },
-    {
-      "name": "Toby",
-      "total": 10.0,
-      "teams": [
-        {
-          "name": "Canada",
-          "group": "B",
-          "pts": 6.5,
-          "stage": "r16",
-          "groupWins": 1,
-          "draws": 1
-        },
-        {
-          "name": "Paraguay",
-          "group": "D",
-          "pts": 3.5,
-          "stage": "r32",
-          "groupWins": 1,
-          "draws": 1
-        },
-        {
-          "name": "Panama",
-          "group": "L",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
         }
       ]
     },
@@ -274,36 +304,6 @@
         {
           "name": "Haiti",
           "group": "C",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
-        }
-      ]
-    },
-    {
-      "name": "Luke",
-      "total": 8.0,
-      "teams": [
-        {
-          "name": "Brazil",
-          "group": "C",
-          "pts": 4.5,
-          "stage": "r32",
-          "groupWins": 2,
-          "draws": 1
-        },
-        {
-          "name": "Australia",
-          "group": "D",
-          "pts": 3.5,
-          "stage": "r32",
-          "groupWins": 1,
-          "draws": 1
-        },
-        {
-          "name": "Jordan",
-          "group": "J",
           "pts": 0.0,
           "stage": null,
           "groupWins": 0,
