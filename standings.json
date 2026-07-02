@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-01T10:28:55+00:00",
+  "updated": "2026-07-02T09:42:09+00:00",
   "scoring": {
     "draw": 0.5,
     "groupWin": 1,
@@ -37,6 +37,36 @@
           "pts": 4.0,
           "stage": "r32",
           "groupWins": 2,
+          "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Dylan",
+      "total": 15.0,
+      "teams": [
+        {
+          "name": "Mexico",
+          "group": "A",
+          "pts": 8.0,
+          "stage": "r16",
+          "groupWins": 3,
+          "draws": 0
+        },
+        {
+          "name": "USA",
+          "group": "D",
+          "pts": 7.0,
+          "stage": "r16",
+          "groupWins": 2,
+          "draws": 0
+        },
+        {
+          "name": "Uzbekistan",
+          "group": "K",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
           "draws": 0
         }
       ]
@@ -132,6 +162,36 @@
       ]
     },
     {
+      "name": "Ally",
+      "total": 12.0,
+      "teams": [
+        {
+          "name": "England",
+          "group": "L",
+          "pts": 7.5,
+          "stage": "r16",
+          "groupWins": 2,
+          "draws": 1
+        },
+        {
+          "name": "South Africa",
+          "group": "A",
+          "pts": 3.5,
+          "stage": "r32",
+          "groupWins": 1,
+          "draws": 1
+        },
+        {
+          "name": "South Korea",
+          "group": "A",
+          "pts": 1.0,
+          "stage": null,
+          "groupWins": 1,
+          "draws": 0
+        }
+      ]
+    },
+    {
       "name": "Jim",
       "total": 11.5,
       "teams": [
@@ -222,62 +282,32 @@
       ]
     },
     {
-      "name": "Ally",
-      "total": 9.0,
+      "name": "Ricki",
+      "total": 8.5,
       "teams": [
         {
-          "name": "England",
-          "group": "L",
-          "pts": 4.5,
-          "stage": "r32",
-          "groupWins": 2,
-          "draws": 1
-        },
-        {
-          "name": "South Africa",
-          "group": "A",
-          "pts": 3.5,
-          "stage": "r32",
+          "name": "Belgium",
+          "group": "G",
+          "pts": 7.0,
+          "stage": "r16",
           "groupWins": 1,
-          "draws": 1
+          "draws": 2
         },
         {
-          "name": "South Korea",
-          "group": "A",
+          "name": "Uruguay",
+          "group": "H",
           "pts": 1.0,
           "stage": null,
-          "groupWins": 1,
-          "draws": 0
-        }
-      ]
-    },
-    {
-      "name": "Dylan",
-      "total": 9.0,
-      "teams": [
-        {
-          "name": "Mexico",
-          "group": "A",
-          "pts": 5.0,
-          "stage": "r32",
-          "groupWins": 3,
-          "draws": 0
+          "groupWins": 0,
+          "draws": 2
         },
         {
-          "name": "USA",
-          "group": "D",
-          "pts": 4.0,
-          "stage": "r32",
-          "groupWins": 2,
-          "draws": 0
-        },
-        {
-          "name": "Uzbekistan",
-          "group": "K",
-          "pts": 0.0,
+          "name": "New Zealand",
+          "group": "G",
+          "pts": 0.5,
           "stage": null,
           "groupWins": 0,
-          "draws": 0
+          "draws": 1
         }
       ]
     },
@@ -398,36 +428,6 @@
           "stage": null,
           "groupWins": 0,
           "draws": 0
-        }
-      ]
-    },
-    {
-      "name": "Ricki",
-      "total": 5.5,
-      "teams": [
-        {
-          "name": "Belgium",
-          "group": "G",
-          "pts": 4.0,
-          "stage": "r32",
-          "groupWins": 1,
-          "draws": 2
-        },
-        {
-          "name": "Uruguay",
-          "group": "H",
-          "pts": 1.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 2
-        },
-        {
-          "name": "New Zealand",
-          "group": "G",
-          "pts": 0.5,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 1
         }
       ]
     },
