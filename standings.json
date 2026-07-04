@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-03T09:41:19+00:00",
+  "updated": "2026-07-04T09:04:19+00:00",
   "scoring": {
     "draw": 0.5,
     "groupWin": 1,
@@ -38,6 +38,66 @@
           "stage": "r32",
           "groupWins": 2,
           "draws": 0
+        }
+      ]
+    },
+    {
+      "name": "Kevin",
+      "total": 19.0,
+      "teams": [
+        {
+          "name": "Switzerland",
+          "group": "B",
+          "pts": 7.5,
+          "stage": "r16",
+          "groupWins": 2,
+          "draws": 1
+        },
+        {
+          "name": "Colombia",
+          "group": "K",
+          "pts": 7.5,
+          "stage": "r16",
+          "groupWins": 2,
+          "draws": 1
+        },
+        {
+          "name": "Japan",
+          "group": "F",
+          "pts": 4.0,
+          "stage": "r32",
+          "groupWins": 1,
+          "draws": 2
+        }
+      ]
+    },
+    {
+      "name": "Jake",
+      "total": 16.5,
+      "teams": [
+        {
+          "name": "Argentina",
+          "group": "J",
+          "pts": 8.0,
+          "stage": "r16",
+          "groupWins": 3,
+          "draws": 0
+        },
+        {
+          "name": "Spain",
+          "group": "H",
+          "pts": 7.5,
+          "stage": "r16",
+          "groupWins": 2,
+          "draws": 1
+        },
+        {
+          "name": "Saudi Arabia",
+          "group": "H",
+          "pts": 1.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 2
         }
       ]
     },
@@ -132,36 +192,6 @@
       ]
     },
     {
-      "name": "Kevin",
-      "total": 13.0,
-      "teams": [
-        {
-          "name": "Switzerland",
-          "group": "B",
-          "pts": 4.5,
-          "stage": "r32",
-          "groupWins": 2,
-          "draws": 1
-        },
-        {
-          "name": "Colombia",
-          "group": "K",
-          "pts": 4.5,
-          "stage": "r32",
-          "groupWins": 2,
-          "draws": 1
-        },
-        {
-          "name": "Japan",
-          "group": "F",
-          "pts": 4.0,
-          "stage": "r32",
-          "groupWins": 1,
-          "draws": 2
-        }
-      ]
-    },
-    {
       "name": "Ally",
       "total": 12.0,
       "teams": [
@@ -222,6 +252,36 @@
       ]
     },
     {
+      "name": "Ken",
+      "total": 11.0,
+      "teams": [
+        {
+          "name": "Egypt",
+          "group": "G",
+          "pts": 7.0,
+          "stage": "r16",
+          "groupWins": 1,
+          "draws": 2
+        },
+        {
+          "name": "Croatia",
+          "group": "L",
+          "pts": 4.0,
+          "stage": "r32",
+          "groupWins": 2,
+          "draws": 0
+        },
+        {
+          "name": "Haiti",
+          "group": "C",
+          "pts": 0.0,
+          "stage": null,
+          "groupWins": 0,
+          "draws": 0
+        }
+      ]
+    },
+    {
       "name": "Luke",
       "total": 11.0,
       "teams": [
@@ -252,32 +312,32 @@
       ]
     },
     {
-      "name": "Jake",
+      "name": "Big Tob",
       "total": 10.5,
       "teams": [
         {
-          "name": "Argentina",
-          "group": "J",
-          "pts": 5.0,
-          "stage": "r32",
-          "groupWins": 3,
-          "draws": 0
+          "name": "Portugal",
+          "group": "K",
+          "pts": 7.0,
+          "stage": "r16",
+          "groupWins": 1,
+          "draws": 2
         },
         {
-          "name": "Spain",
-          "group": "H",
-          "pts": 4.5,
+          "name": "Sweden",
+          "group": "F",
+          "pts": 3.5,
           "stage": "r32",
-          "groupWins": 2,
+          "groupWins": 1,
           "draws": 1
         },
         {
-          "name": "Saudi Arabia",
-          "group": "H",
-          "pts": 1.0,
+          "name": "Iraq",
+          "group": "I",
+          "pts": 0.0,
           "stage": null,
           "groupWins": 0,
-          "draws": 2
+          "draws": 0
         }
       ]
     },
@@ -308,36 +368,6 @@
           "stage": null,
           "groupWins": 0,
           "draws": 1
-        }
-      ]
-    },
-    {
-      "name": "Ken",
-      "total": 8.0,
-      "teams": [
-        {
-          "name": "Egypt",
-          "group": "G",
-          "pts": 4.0,
-          "stage": "r32",
-          "groupWins": 1,
-          "draws": 2
-        },
-        {
-          "name": "Croatia",
-          "group": "L",
-          "pts": 4.0,
-          "stage": "r32",
-          "groupWins": 2,
-          "draws": 0
-        },
-        {
-          "name": "Haiti",
-          "group": "C",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
         }
       ]
     },
@@ -398,36 +428,6 @@
           "stage": null,
           "groupWins": 0,
           "draws": 1
-        }
-      ]
-    },
-    {
-      "name": "Big Tob",
-      "total": 7.5,
-      "teams": [
-        {
-          "name": "Portugal",
-          "group": "K",
-          "pts": 4.0,
-          "stage": "r32",
-          "groupWins": 1,
-          "draws": 2
-        },
-        {
-          "name": "Sweden",
-          "group": "F",
-          "pts": 3.5,
-          "stage": "r32",
-          "groupWins": 1,
-          "draws": 1
-        },
-        {
-          "name": "Iraq",
-          "group": "I",
-          "pts": 0.0,
-          "stage": null,
-          "groupWins": 0,
-          "draws": 0
         }
       ]
     },
