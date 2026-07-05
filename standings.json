@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-04T09:04:19+00:00",
+  "updated": "2026-07-05T09:26:40+00:00",
   "scoring": {
     "draw": 0.5,
     "groupWin": 1,
@@ -13,21 +13,21 @@
   "standings": [
     {
       "name": "Nathan",
-      "total": 19.5,
+      "total": 27.5,
       "teams": [
         {
           "name": "France",
           "group": "I",
-          "pts": 8.0,
-          "stage": "r16",
+          "pts": 12.0,
+          "stage": "qf",
           "groupWins": 3,
           "draws": 0
         },
         {
           "name": "Morocco",
           "group": "C",
-          "pts": 7.5,
-          "stage": "r16",
+          "pts": 11.5,
+          "stage": "qf",
           "groupWins": 2,
           "draws": 1
         },
