@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-05T09:26:40+00:00",
+  "updated": "2026-07-06T11:11:44+00:00",
   "scoring": {
     "draw": 0.5,
     "groupWin": 1,
@@ -72,6 +72,36 @@
       ]
     },
     {
+      "name": "Frank",
+      "total": 18.5,
+      "teams": [
+        {
+          "name": "Norway",
+          "group": "I",
+          "pts": 11.0,
+          "stage": "qf",
+          "groupWins": 2,
+          "draws": 0
+        },
+        {
+          "name": "Germany",
+          "group": "E",
+          "pts": 4.0,
+          "stage": "r32",
+          "groupWins": 2,
+          "draws": 0
+        },
+        {
+          "name": "Ecuador",
+          "group": "E",
+          "pts": 3.5,
+          "stage": "r32",
+          "groupWins": 1,
+          "draws": 1
+        }
+      ]
+    },
+    {
       "name": "Jake",
       "total": 16.5,
       "teams": [
@@ -98,6 +128,36 @@
           "stage": null,
           "groupWins": 0,
           "draws": 2
+        }
+      ]
+    },
+    {
+      "name": "Ally",
+      "total": 16.0,
+      "teams": [
+        {
+          "name": "England",
+          "group": "L",
+          "pts": 11.5,
+          "stage": "qf",
+          "groupWins": 2,
+          "draws": 1
+        },
+        {
+          "name": "South Africa",
+          "group": "A",
+          "pts": 3.5,
+          "stage": "r32",
+          "groupWins": 1,
+          "draws": 1
+        },
+        {
+          "name": "South Korea",
+          "group": "A",
+          "pts": 1.0,
+          "stage": null,
+          "groupWins": 1,
+          "draws": 0
         }
       ]
     },
@@ -132,36 +192,6 @@
       ]
     },
     {
-      "name": "Frank",
-      "total": 14.5,
-      "teams": [
-        {
-          "name": "Norway",
-          "group": "I",
-          "pts": 7.0,
-          "stage": "r16",
-          "groupWins": 2,
-          "draws": 0
-        },
-        {
-          "name": "Germany",
-          "group": "E",
-          "pts": 4.0,
-          "stage": "r32",
-          "groupWins": 2,
-          "draws": 0
-        },
-        {
-          "name": "Ecuador",
-          "group": "E",
-          "pts": 3.5,
-          "stage": "r32",
-          "groupWins": 1,
-          "draws": 1
-        }
-      ]
-    },
-    {
       "name": "Toby",
       "total": 13.0,
       "teams": [
@@ -187,36 +217,6 @@
           "pts": 0.0,
           "stage": null,
           "groupWins": 0,
-          "draws": 0
-        }
-      ]
-    },
-    {
-      "name": "Ally",
-      "total": 12.0,
-      "teams": [
-        {
-          "name": "England",
-          "group": "L",
-          "pts": 7.5,
-          "stage": "r16",
-          "groupWins": 2,
-          "draws": 1
-        },
-        {
-          "name": "South Africa",
-          "group": "A",
-          "pts": 3.5,
-          "stage": "r32",
-          "groupWins": 1,
-          "draws": 1
-        },
-        {
-          "name": "South Korea",
-          "group": "A",
-          "pts": 1.0,
-          "stage": null,
-          "groupWins": 1,
           "draws": 0
         }
       ]
