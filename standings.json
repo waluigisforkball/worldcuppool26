@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-10T09:59:08+00:00",
+  "updated": "2026-07-11T08:19:09+00:00",
   "scoring": {
     "draw": 0.5,
     "groupWin": 1,
@@ -13,13 +13,13 @@
   "standings": [
     {
       "name": "Nathan",
-      "total": 27.5,
+      "total": 33.5,
       "teams": [
         {
           "name": "France",
           "group": "I",
-          "pts": 12.0,
-          "stage": "qf",
+          "pts": 18.0,
+          "stage": "sf",
           "groupWins": 3,
           "draws": 0
         },
@@ -43,8 +43,16 @@
     },
     {
       "name": "Jake",
-      "total": 24.5,
+      "total": 30.5,
       "teams": [
+        {
+          "name": "Spain",
+          "group": "H",
+          "pts": 17.5,
+          "stage": "sf",
+          "groupWins": 2,
+          "draws": 1
+        },
         {
           "name": "Argentina",
           "group": "J",
@@ -52,14 +60,6 @@
           "stage": "qf",
           "groupWins": 3,
           "draws": 0
-        },
-        {
-          "name": "Spain",
-          "group": "H",
-          "pts": 11.5,
-          "stage": "qf",
-          "groupWins": 2,
-          "draws": 1
         },
         {
           "name": "Saudi Arabia",
