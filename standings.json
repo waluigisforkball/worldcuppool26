@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-15T08:41:21+00:00",
+  "updated": "2026-07-16T08:39:38+00:00",
   "scoring": {
     "draw": 0.5,
     "groupWin": 1,
@@ -13,21 +13,21 @@
   "standings": [
     {
       "name": "Jake",
-      "total": 36.5,
+      "total": 52.5,
       "teams": [
         {
           "name": "Argentina",
           "group": "J",
-          "pts": 18.0,
-          "stage": "sf",
+          "pts": 26.0,
+          "stage": "final",
           "groupWins": 3,
           "draws": 0
         },
         {
           "name": "Spain",
           "group": "H",
-          "pts": 17.5,
-          "stage": "sf",
+          "pts": 25.5,
+          "stage": "final",
           "groupWins": 2,
           "draws": 1
         },
